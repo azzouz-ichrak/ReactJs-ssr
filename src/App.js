@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from 'react';
 
-function App() {
+const App = () => {
+  const [clicks, setClicks] = useState({ left: 0, right: 0 })
+
+  const handleLeftClick = () => setClicks({ ...clicks, left: clicks.left + 1 })
+  const handleRightClick = () => setClicks({ ...clicks, right: clicks.right + 1 })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="text-center">
+      {clicks.left}
+      <button onClick={handleLeftClick} className="btn btn-info">
+        Left
+        </button>
+      <button onClick={handleRightClick} className="btn btn-danger">
+        Right
+        </button>
+      {clicks.right}
     </div>
-  );
+  )
 }
-
 export default App;
